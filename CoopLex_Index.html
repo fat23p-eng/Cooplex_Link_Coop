@@ -258,7 +258,8 @@ tr:hover td{background:#fdf9f0}
 .col-no{width:44px;text-align:center;color:var(--gray);font-size:.78rem}
 .col-date{width:150px;white-space:nowrap;color:var(--navy2);font-size:.82rem;font-weight:500}
 .col-title{font-weight:500;line-height:1.5}
-.col-action{width:90px;text-align:center}
+.col-action{width:150px;text-align:center;white-space:nowrap}
+.action-wrap{display:inline-flex;gap:6px;align-items:center;justify-content:center;flex-wrap:nowrap}
 
 /* ══════════════════════════════════════════════════
    Card layout (Mobile < 768px) — replaces table rows
@@ -753,10 +754,10 @@ function renderAll(){
     // ── Desktop table rows ──
     const tRows=rows.map((r,i)=>{
       const action=isAdmin
-        ?`<td class="col-action">
-            <button class="btn-edit" onclick="openEdit(${r.id},'${esc(r.category)}','${esc(r.date)}','${esc(r.title)}','${esc(r.url)}')">แก้ไข</button>
-            <button class="btn-delete" onclick="deleteItem(${r.id})">ลบ</button>
-          </td>`
+        ?`<td class="col-action"><div class="action-wrap">
+            <button class="btn-edit" onclick="openEdit(${r.id},'${esc(r.category)}','${esc(r.date)}','${esc(r.title)}','${esc(r.url)}')">✏️ แก้ไข</button>
+            <button class="btn-delete" onclick="deleteItem(${r.id})">🗑 ลบ</button>
+          </div></td>`
         :`<td class="col-action"><a class="btn-view" href="${r.url}" target="_blank" rel="noopener">📄 เปิด</a></td>`;
       return`<tr>
         <td class="col-no">${i+1}</td>
